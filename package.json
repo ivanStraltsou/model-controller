@@ -1,0 +1,30 @@
+{
+  "name": "rc-currency",
+  "version": "0.0.0",
+  "description": "",
+  "main": "karma.conf.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "jasmine": "^2.2.1",
+    "jasmine-core": "^2.2.0",
+    "karma": "^0.12.31",
+    "karma-chrome-launcher": "^0.1.7",
+    "karma-firefox-launcher": "^0.1.4",
+    "karma-jasmine": "^0.3.5",
+    "karma-requirejs": "^0.2.2",
+    "requirejs": "^2.1.17"
+  },
+  "dependencies": {
+    "angular": "^1.3.15",
+    "angular-messages": "^1.3.15",
+    "angular-mocks": "^1.3.15",
+    "angular-sanitize": "^1.3.15"
+  }
+}

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" media="all"/>
+</head>
+<body ng-controller="AppController as ctrl">
+
+<nav class="navbar navbar-default">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<a class="navbar-brand" href="#">RC-Currency Test Page</a>
+		</div>
+	</div>
+</nav>
+
+<div class="panel panel-default">
+	<form name="form" class="panel-body">
+		<div class="form-horizontal">
+			<div class="form-group">
+				<label class="col-sm-2 control-label">Model value</label>
+
+				<div class="col-sm-5">
+					<p class="form-control-static">
+						<span id="model">{{ ctrl.model }}</span>
+					</p>
+				</div>
+			</div>
+			<div class="form-horizontal">
+				<div class="form-group">
+					<label class="col-sm-2 control-label">$rcCurrencyServive.format</label>
+
+					<div class="col-sm-5">
+						<p class="form-control-static">
+							<span id="span">{{ ctrl.rcCurrencyFormat }}</span>
+						</p>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">Input with binding and
+					                                      rcCurrency filter</label>
+
+					<div class="col-sm-5">
+						<p class="form-control-static">
+							<span id="span" ng-bind-html="ctrl.model | rcCurrency"></span>
+						</p>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">Input with binding and
+					                                      rcCurrency filter:true</label>
+
+					<div class="col-sm-5">
+						<p class="form-control-static">
+							<span id="span" ng-bind-html="ctrl.model | rcCurrency:true"></span>
+						</p>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="input" class="col-sm-2 control-label">Input with model and
+					                                                  rc-currency
+					                                                  directive</label>
+
+					<div class="col-sm-5">
+						<input id="input" class="form-control" name="currency"
+						       ng-model="ctrl.model"
+						       rc-currency
+						       required
+						       rc-validate-lower
+						       rc-depend-on="ctrl.model2" />
+
+						<!-- use default error and add specifics + override -->
+						<h3 ng-messages="form.currency.$error" role="alert" ng-messages-include="validation-messages.html">
+							<div ng-message="rcLower">Input 1 must be less than input 2</div>
+							<div ng-message="required">Overriden error</div>
+						</h3>
+
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="input2" class="col-sm-2 control-label">Dependent field</label>
+
+					<div class="col-sm-5">
+						<input id="input2" type="number" class="form-control" name="currency2"
+						       ng-model="ctrl.model2"
+						       ng-model-options="{allowInvalid: true}"
+						       ng-maxlength="5"
+									 required/>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="change-model-input" class="col-sm-2 control-label">Change
+					                                                               model</label>
+
+					<div class="col-sm-5">
+						<input autofocus id="change-model-input" type="text" class="form-control" ng-model="ctrl.newModel" ng-keyup="$event.keyCode == 13 ? ctrl.changeModel() : null"/>
+					</div>
+					<div class="col-sm-5">
+						<button id="change-model-button" class="btn btn-info" ng-click="ctrl.changeModel()">
+							Change model
+						</button>
+					</div>
+				</div>
+
+				<h2 ng-messages="form.currency2.$error" role="alert" ng-messages-include="validation-messages.html"></h2>
+
+				<pre ng-bind="form | json">
+				</pre>
+
+			</div>
+		</div>
+	</form>
+</div>
+
+<script data-main="js/main" src="js/vendor/requirejs/require.js"></script>
+</body>
+</html>
