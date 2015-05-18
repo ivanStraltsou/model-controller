@@ -80,9 +80,9 @@
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="input2" class="col-sm-2 control-label">Dependent field</label>
+					<label for="input2" class="col-sm-2 control-label">Dependent field via editable-directive(dblclick to edit)</label>
 
-					<div class="col-sm-5">
+					<div class="col-sm-5" rc-editable="ctrl.model2">
 						<input id="input2" type="number" class="form-control" name="currency2"
 						       ng-model="ctrl.model2"
 						       ng-model-options="{allowInvalid: true}"
